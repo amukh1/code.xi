@@ -2,10 +2,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const bot = client
 
+// this authorization is the top.gg api, unless your uploading your bot to top.gg then dont mind this
 {
-    "Authorization"; "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1ODkwODUzNzg5NTM4NzE2NyIsImJvdCI6dHJ1ZSwiaWF0IjoxNjI2NDkyOTUxfQ.7Zww--2He0Ep_QFqLlhy-iDxC6jj39BI9x77dB3a5Pc"
+    "Authorization"; "authorization here"
   }
-  
+// auth ends here
+
+// this is the prefix, "%ban @dumbfrog" if you set it to "!" then the command is "!ban @dumbfrog"
 const prefix = '%';
  
 const fs = require('fs');
@@ -21,7 +24,9 @@ for(const file of commandFiles){
  
  
 client.once('ready', () => {
+   // to launch bot type node . in the terminal, if you dont have node.js, then download it. This log says cxi is online (or whatever bad you want) when you start the bot
     console.log('Cxi Is Successfully Online!');
+   // user activity "Playing: Website released | %commands %help | supports dms"
     client.user.setActivity('Website released | %commands %help | supports dms')
  
     
@@ -36,13 +41,14 @@ client.on('guildMemberAdd', member => {
     
     channel.send(`Welcome to the server, ${member}`);
   });
- 
+ // command handler
 client.on('message', message =>{
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
- 
+ // these are the commands, you can change them but make sure to change the corrisponding file in the commands folder. if you want to add more, just use my format
+    // and make a file in the commands folder with the commands format
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     }else if(command === 'commands'){
@@ -80,6 +86,9 @@ client.on('message', message =>{
     }
 });
  
-client.login('ODU4OTA4NTM3ODk1Mzg3MTY3.YNk-6Q.VbLOJzWZxgaeym_WvfnzZDu28XM');
+// Bot token \/ here
+
+client.login('BOT TOKEN HERE');
  
- 
+ // this is the end, remember, this doesnt include the json files or default discord.js bot files, you can find a tutorial on youtube for that. this is just to add special
+// features to your bot like commands or music. thank you for checking this out -amukh1
